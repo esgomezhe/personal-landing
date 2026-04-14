@@ -124,7 +124,7 @@ export default function About() {
           {/* Info panels */}
           <div className="grid grid-cols-2 gap-3">
             {[
-              { label: "YEARS_EXP", value: "5+", sub: "YEARS IN PRODUCTION" },
+              { label: "YEARS_EXP", value: "4+", sub: "YEARS IN PRODUCTION" },
               { label: "SYSTEMS", value: "12+", sub: "DEPLOYED PROJECTS" },
               { label: "STACK_COVERAGE", value: "FULL", sub: "BACKEND TO DEPLOY" },
               { label: "AVAILABILITY", value: "OPEN", sub: "CONTACT_CHANNEL" },
