@@ -128,10 +128,10 @@ const projects: Project[] = [
   {
     id: "PRJ-012",
     name: "Landing Fundación I+D+I",
-    desc: "Landing page de la Fundación de I+D+I construida con Google Gemini. Misión, herramientas y áreas de impacto.",
+    desc: "Landing page de la Fundación de I+D+I. Misión, herramientas y áreas de impacto.",
     tags: ["REACT 19", "VITE", "GEMINI API", "TS"],
     status: "ACTIVE",
-    category: "IA / FRONTEND",
+    category: "FRONTEND",
     url: "https://fidi.wirkconsulting.com/",
   },
   {
