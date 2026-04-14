@@ -8,7 +8,7 @@ const TYPED_TEXTS = [
   "IT Lead",
   "API Architect",
   "Python Engineer",
-  "Physics Engeneer"
+  "Physics Engineer"
 ];
 
 function useTypingEffect(texts: string[], speed = 70, pause = 1800) {
