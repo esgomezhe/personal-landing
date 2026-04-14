@@ -45,7 +45,7 @@ export default function MobileNav() {
             className={`flex flex-col items-center pt-1 transition-colors ${
               isActive
                 ? "text-green-400 border-t-2 border-green-400"
-                : "text-zinc-600 hover:text-zinc-400"
+                : "text-zinc-400 hover:text-zinc-400"
             }`}
           >
             <span className="material-symbols-outlined text-xl">

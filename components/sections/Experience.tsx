@@ -70,6 +70,7 @@ export default function Experience() {
           >
             [ MODULE_04 ]
           </span>
+          <span className="jp-label">&gt; 任務記録</span>
           <div className="h-px flex-1 bg-zinc-800" />
         </div>
         <h3
@@ -122,7 +123,7 @@ export default function Experience() {
                     {item.role}
                   </h4>
                   <div
-                    className="text-[10px] text-zinc-500 mt-0.5"
+                    className="text-[10px] text-zinc-400 mt-0.5"
                     style={{ fontFamily: "var(--font-roboto-mono)" }}
                   >
                     {item.company}

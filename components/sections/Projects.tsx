@@ -23,7 +23,7 @@ const statusConfig: Record<ProjectStatus, { label: string; classes: string }> = 
   },
   HIBERNATED: {
     label: "HIBERNATED",
-    classes: "text-zinc-500 bg-zinc-900 border-zinc-700",
+    classes: "text-zinc-400 bg-zinc-900 border-zinc-700",
   },
 };
 
@@ -150,6 +150,15 @@ const projects: Project[] = [
     status: "HIBERNATED",
     category: "FRONTEND",
   },
+  {
+    id: "PRJ-015",
+    name: "Portfolio Personal",
+    desc: "Landing page personal con estética NERV/terminal táctica. Next.js 16, Tailwind v4, Framer Motion y Web3Forms.",
+    tags: ["NEXT.JS", "TAILWIND 4", "FRAMER", "TS"],
+    status: "ACTIVE",
+    category: "FRONTEND",
+    url: "https://esgomezhe.vercel.app/#hero",
+  },
 ];
 
 export default function Projects() {
@@ -179,7 +188,7 @@ export default function Projects() {
           <div className="w-16 h-0.5 bg-green-400" />
         </div>
         <span
-          className="text-[10px] text-zinc-600 hidden md:block"
+          className="text-[10px] text-zinc-400 hidden md:block"
           style={{ fontFamily: "var(--font-roboto-mono)" }}
         >
           ENTRIES_FOUND: {String(projects.length).padStart(2, "0")}
@@ -213,13 +222,13 @@ export default function Projects() {
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex flex-col gap-0.5">
                     <span
-                      className="text-[9px] text-zinc-600"
+                      className="text-[9px] text-zinc-400"
                       style={{ fontFamily: "var(--font-roboto-mono)" }}
                     >
                       FILE_ID: {project.id}
                     </span>
                     <span
-                      className="text-[8px] text-zinc-700 uppercase"
+                      className="text-[8px] text-zinc-400 uppercase"
                       style={{ fontFamily: "var(--font-roboto-mono)" }}
                     >
                       {project.category}
@@ -227,7 +236,7 @@ export default function Projects() {
                   </div>
                   <div className="flex items-center gap-2">
                     {project.url && !isHibernated && (
-                      <span className="material-symbols-outlined text-[14px] text-zinc-700 group-hover:text-green-400 transition-colors">
+                      <span className="material-symbols-outlined text-[14px] text-zinc-400 group-hover:text-green-400 transition-colors">
                         open_in_new
                       </span>
                     )}
@@ -243,7 +252,7 @@ export default function Projects() {
                 <h4
                   className={`text-sm font-bold mb-2 uppercase transition-colors ${
                     isHibernated
-                      ? "text-zinc-500"
+                      ? "text-zinc-400"
                       : "text-white group-hover:text-green-400"
                   }`}
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
@@ -252,7 +261,7 @@ export default function Projects() {
                 </h4>
 
                 <p
-                  className="text-[11px] text-zinc-500 mb-4 leading-relaxed"
+                  className="text-[11px] text-zinc-400 mb-4 leading-relaxed"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
                   {project.desc}
@@ -272,7 +281,7 @@ export default function Projects() {
 
                 {project.url && !isHibernated && (
                   <div
-                    className="mt-3 text-[9px] text-zinc-700 group-hover:text-green-400/60 transition-colors truncate"
+                    className="mt-3 text-[9px] text-zinc-400 group-hover:text-green-400/60 transition-colors truncate"
                     style={{ fontFamily: "var(--font-roboto-mono)" }}
                   >
                     {project.url}

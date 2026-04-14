@@ -5,13 +5,13 @@ export default function FooterBar() {
         className="text-[9px] uppercase opacity-70 text-green-400"
         style={{ fontFamily: "var(--font-roboto-mono)" }}
       >
-        SYSTEM_REF: NERV_OS_V2.0.4 | LATENCY: 12MS | COORD: 5.0703°N, 75.5138°W
+        シビュラシステム /// SYSTEM_REF: SIBYL_OS_V2.0.4 | LATENCY: 12MS | COORD: 5.0703°N, 75.5138°W
       </div>
       <div className="flex gap-6">
         {["PRIVACY_PROTOCOL", "SECURITY_LOG", "V_ERR_LOG"].map((label) => (
           <span
             key={label}
-            className="text-zinc-600 text-[9px] uppercase hover:text-green-300 transition-colors cursor-default"
+            className="text-zinc-400 text-[9px] uppercase hover:text-green-300 transition-colors cursor-default"
             style={{ fontFamily: "var(--font-roboto-mono)" }}
           >
             {label}

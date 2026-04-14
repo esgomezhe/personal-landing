@@ -103,7 +103,7 @@ export default function Contact() {
               <div className="flex flex-col">
                 <label
                   htmlFor="contact-name"
-                  className="text-[9px] text-zinc-600 uppercase mb-2 tracking-widest"
+                  className="text-[9px] text-zinc-400 uppercase mb-2 tracking-widest"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   TARGET_ID
@@ -116,7 +116,7 @@ export default function Contact() {
                   minLength={2}
                   placeholder="Tu nombre completo"
                   disabled={isDisabled}
-                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm transition-colors placeholder:text-zinc-700 disabled:opacity-40"
+                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm transition-colors placeholder:text-zinc-400 disabled:opacity-40"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 />
               </div>
@@ -125,7 +125,7 @@ export default function Contact() {
               <div className="flex flex-col">
                 <label
                   htmlFor="contact-email"
-                  className="text-[9px] text-zinc-600 uppercase mb-2 tracking-widest"
+                  className="text-[9px] text-zinc-400 uppercase mb-2 tracking-widest"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   RETURN_ADDRESS
@@ -137,7 +137,7 @@ export default function Contact() {
                   required
                   placeholder="tu@email.com"
                   disabled={isDisabled}
-                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm transition-colors placeholder:text-zinc-700 disabled:opacity-40"
+                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm transition-colors placeholder:text-zinc-400 disabled:opacity-40"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 />
               </div>
@@ -146,7 +146,7 @@ export default function Contact() {
               <div className="flex flex-col">
                 <label
                   htmlFor="contact-subject"
-                  className="text-[9px] text-zinc-600 uppercase mb-2 tracking-widest"
+                  className="text-[9px] text-zinc-400 uppercase mb-2 tracking-widest"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   ENCRYPTION_SUBJECT
@@ -159,7 +159,7 @@ export default function Contact() {
                   minLength={3}
                   placeholder="Propuesta de proyecto / Colaboración / Consulta"
                   disabled={isDisabled}
-                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm transition-colors placeholder:text-zinc-700 disabled:opacity-40"
+                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm transition-colors placeholder:text-zinc-400 disabled:opacity-40"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 />
               </div>
@@ -168,7 +168,7 @@ export default function Contact() {
               <div className="flex flex-col">
                 <label
                   htmlFor="contact-message"
-                  className="text-[9px] text-zinc-600 uppercase mb-2 tracking-widest"
+                  className="text-[9px] text-zinc-400 uppercase mb-2 tracking-widest"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   DATA_PAYLOAD
@@ -181,7 +181,7 @@ export default function Contact() {
                   minLength={10}
                   placeholder="Contame de tu proyecto, idea o propuesta..."
                   disabled={isDisabled}
-                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm resize-none transition-colors placeholder:text-zinc-700 disabled:opacity-40"
+                  className="bg-transparent border-b border-zinc-700 focus:border-green-400 outline-none text-zinc-200 py-2 text-sm resize-none transition-colors placeholder:text-zinc-400 disabled:opacity-40"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 />
               </div>
@@ -209,7 +209,7 @@ export default function Contact() {
                     className="text-[10px] text-green-400"
                     style={{ fontFamily: "var(--font-roboto-mono)" }}
                   >
-                    // Señal recibida. Respuesta en menos de 24H.
+                    {">> Señal recibida. Respuesta en menos de 24H."}
                   </p>
                 )}
                 {status === "error" && (
@@ -217,7 +217,7 @@ export default function Contact() {
                     className="text-[10px] text-red-400"
                     style={{ fontFamily: "var(--font-roboto-mono)" }}
                   >
-                    // Error en la transmisión. Intentá de nuevo o usá el email directo.
+                    {">> Error en la transmisión. Intentá de nuevo o usá el email directo."}
                   </p>
                 )}
               </div>
@@ -227,7 +227,7 @@ export default function Contact() {
             <div className="flex flex-col justify-center gap-8 lg:border-l border-zinc-800 lg:pl-12">
               <div>
                 <div
-                  className="text-[9px] text-zinc-600 tracking-widest mb-5 uppercase"
+                  className="text-[9px] text-zinc-400 tracking-widest mb-5 uppercase"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   ACTIVE_DATA_CHANNELS
@@ -247,7 +247,7 @@ export default function Contact() {
                       </span>
                       <div>
                         <div
-                          className="text-[9px] text-zinc-600 mb-0.5"
+                          className="text-[9px] text-zinc-400 mb-0.5"
                           style={{ fontFamily: "var(--font-roboto-mono)" }}
                         >
                           {ch.label}
@@ -265,10 +265,10 @@ export default function Contact() {
               </div>
 
               <div
-                className="p-4 bg-zinc-900 border border-zinc-800 text-[10px] text-zinc-600 leading-relaxed italic"
+                className="p-4 bg-zinc-900 border border-zinc-800 text-[10px] text-zinc-400 leading-relaxed italic"
                 style={{ fontFamily: "var(--font-roboto-mono)" }}
               >
-                {"// NOTICE: All communications are logged and processed via secondary secure protocols. Response latency: < 24H."}
+                {">> SIBYL_NET: All transmissions routed through secure Bureau protocols. Response latency: < 24H. 公安局 第一係"}
               </div>
 
               <div className="flex gap-3 items-center">

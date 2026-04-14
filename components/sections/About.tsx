@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const tags = ["PYTHON_EXPERT", "API_ARCHITECT", "LLM_INTEGRATOR", "TECH_LEAD"];
+const tags = ["PYTHON_EXPERT", "API_ARCHITECT", "LLM_INTEGRATOR", "TECH_LEAD", "色相: CLEAR"];
 
 const metrics = [
   { label: "SYSTEM_EFFICIENCY", value: 94, color: "bg-green-400" },
@@ -30,7 +30,7 @@ export default function About() {
           <div className="bracket-bottom-right" />
           <div className="p-8 bg-zinc-950/50 border border-zinc-800/50">
             <div
-              className="text-[9px] text-zinc-600 mb-4 tracking-[0.3em] uppercase"
+              className="text-[9px] text-zinc-400 mb-4 tracking-[0.3em] uppercase"
               style={{ fontFamily: "var(--font-roboto-mono)" }}
             >
               OPERATOR_PROFILE_V2
@@ -57,7 +57,7 @@ export default function About() {
             </p>
 
             <p
-              className="text-zinc-500 leading-relaxed text-xs mb-6"
+              className="text-zinc-400 leading-relaxed text-xs mb-6"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               Con experiencia liderando equipos técnicos, definiendo arquitectura,
@@ -69,7 +69,11 @@ export default function About() {
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-zinc-800 text-[10px] text-green-400 border border-zinc-700"
+                  className={`px-3 py-1 bg-zinc-800 text-[10px] border border-zinc-700 ${
+                    tag === "色相: CLEAR"
+                      ? "hue-clear border-teal-900/40"
+                      : "text-green-400"
+                  }`}
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   {tag}
@@ -89,7 +93,7 @@ export default function About() {
           {/* System metrics */}
           <div className="p-6 bg-zinc-900 border border-zinc-800">
             <div
-              className="text-[9px] text-zinc-600 mb-5 tracking-widest uppercase"
+              className="text-[9px] text-zinc-400 mb-5 tracking-widest uppercase"
               style={{ fontFamily: "var(--font-roboto-mono)" }}
             >
               SYSTEM_DIAGNOSTICS
@@ -130,7 +134,7 @@ export default function About() {
                 className="p-4 bg-zinc-900/60 border border-zinc-800 relative group hover:border-green-400/30 transition-colors"
               >
                 <div
-                  className="text-[9px] text-zinc-600 mb-1"
+                  className="text-[9px] text-zinc-400 mb-1"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   {item.label}
@@ -142,7 +146,7 @@ export default function About() {
                   {item.value}
                 </div>
                 <div
-                  className="text-[9px] text-zinc-600 mt-1"
+                  className="text-[9px] text-zinc-400 mt-1"
                   style={{ fontFamily: "var(--font-roboto-mono)" }}
                 >
                   {item.sub}

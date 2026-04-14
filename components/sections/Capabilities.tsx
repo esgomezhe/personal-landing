@@ -52,6 +52,7 @@ export default function Capabilities() {
           >
             [ MODULE_05 ]
           </span>
+          <span className="jp-label">&gt; 執行官システム</span>
           <div className="h-px flex-1 bg-zinc-800" />
         </div>
         <h3
@@ -85,7 +86,7 @@ export default function Capabilities() {
               {cap.title}
             </h4>
             <p
-              className="text-[11px] text-zinc-500 leading-relaxed"
+              className="text-[11px] text-zinc-400 leading-relaxed"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               {cap.desc}

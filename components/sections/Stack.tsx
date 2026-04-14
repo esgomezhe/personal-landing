@@ -69,6 +69,7 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
       >
         [ MODULE_03 ]
       </span>
+      <span className="jp-label">&gt; 武装データ</span>
       <div className="h-px flex-1 bg-zinc-800" />
     </div>
     <h3

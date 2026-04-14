@@ -52,7 +52,7 @@ export default function Credentials() {
           <div className="p-5 border-l-2 border-green-400 bg-zinc-900/40 border border-zinc-800 relative">
             <div className="bracket-top-right" />
             <div
-              className="text-[9px] text-zinc-600 mb-2"
+              className="text-[9px] text-zinc-400 mb-2"
               style={{ fontFamily: "var(--font-roboto-mono)" }}
             >
               RECORD_ID: EDU_001
@@ -64,7 +64,7 @@ export default function Credentials() {
               INGENIERÍA FÍSICA
             </div>
             <div
-              className="text-[10px] text-zinc-500 uppercase mb-3"
+              className="text-[10px] text-zinc-400 uppercase mb-3"
               style={{ fontFamily: "var(--font-roboto-mono)" }}
             >
               UNIVERSIDAD NACIONAL DE COLOMBIA

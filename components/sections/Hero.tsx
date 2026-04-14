@@ -8,6 +8,7 @@ const TYPED_TEXTS = [
   "IT Lead",
   "API Architect",
   "Python Engineer",
+  "Physics Engeneer"
 ];
 
 function useTypingEffect(texts: string[], speed = 70, pause = 1800) {
@@ -33,8 +34,10 @@ function useTypingEffect(texts: string[], speed = 70, pause = 1800) {
         setCharIdx((c) => c - 1);
       }, speed / 2);
     } else {
-      setDeleting(false);
-      setTextIdx((i) => (i + 1) % texts.length);
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setTextIdx((i) => (i + 1) % texts.length);
+      }, speed);
     }
 
     return () => clearTimeout(timeout);
@@ -66,6 +69,14 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center border-b border-zinc-800 pb-20"
     >
+      {/* Psycho-Pass — JP background watermark */}
+      <div
+        aria-hidden="true"
+        className="jp-watermark absolute bottom-24 right-0 text-[10rem] md:text-[14rem] font-bold leading-none select-none pointer-events-none hidden md:block"
+      >
+        公安局
+      </div>
+
       {/* Top-right system info panel */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -74,12 +85,14 @@ export default function Hero() {
         className="absolute top-4 right-4 p-3 border border-zinc-800 hidden md:block"
         style={{ fontFamily: "var(--font-roboto-mono)" }}
       >
-        <div className="text-[9px] text-zinc-600 leading-relaxed">
+        <div className="text-[9px] text-zinc-400 leading-relaxed">
           SYS_VER: 2.0.4
           <br />
-          KERNEL: BACKEND_OS
+          KERNEL: SIBYL_OS
           <br />
           UPLINK: STABLE
+          <br />
+          <span className="jp-label">シビュラシステム</span>
         </div>
       </motion.div>
 
@@ -100,7 +113,7 @@ export default function Hero() {
           </span>
           <div className="h-px flex-1 bg-zinc-800" />
           <span
-            className="text-[9px] text-zinc-700"
+            className="text-[9px] text-zinc-400"
             style={{ fontFamily: "var(--font-roboto-mono)" }}
           >
             OPERATOR_ID: 00482
@@ -139,7 +152,7 @@ export default function Hero() {
           className="flex items-center gap-2 mt-2"
           style={{ fontFamily: "var(--font-roboto-mono)" }}
         >
-          <span className="text-zinc-500 text-sm">ROLE:</span>
+          <span className="text-zinc-400 text-sm">ROLE:</span>
           <span className="text-green-400 text-sm min-w-[200px]">{typed}</span>
           <span className="text-green-400 cursor-blink font-bold">█</span>
         </motion.div>
@@ -172,7 +185,7 @@ export default function Hero() {
             >
               <div className="bracket-top-left" />
               <div
-                className="text-[9px] text-zinc-600 uppercase mb-1"
+                className="text-[9px] text-zinc-400 uppercase mb-1"
                 style={{ fontFamily: "var(--font-roboto-mono)" }}
               >
                 {item.label}
@@ -213,13 +226,31 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Signal bars */}
+        {/* Psycho-Pass coefficient strip */}
         <motion.div
           custom={7}
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="flex gap-1 items-end h-8 mt-16"
+          className="flex items-center gap-4 mt-6"
+          style={{ fontFamily: "var(--font-roboto-mono)" }}
+        >
+          <span className="text-[9px] text-zinc-400">犯罪係数:</span>
+          <span className="text-[9px] hue-clear">0.00</span>
+          <span className="text-zinc-400 text-[9px]">──</span>
+          <span className="text-[9px] text-zinc-400">色相:</span>
+          <span className="text-[9px] hue-clear">CLEAR</span>
+          <span className="text-zinc-400 text-[9px]">──</span>
+          <span className="text-[9px] text-zinc-400">公安局 第一係</span>
+        </motion.div>
+
+        {/* Signal bars */}
+        <motion.div
+          custom={8}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="flex gap-1 items-end h-8 mt-8"
         >
           {[8, 4, 2, 6, 3, 10, 5, 8, 4, 7].map((h, i) => (
             <motion.div
@@ -231,7 +262,7 @@ export default function Hero() {
             />
           ))}
           <span
-            className="ml-4 text-[9px] text-zinc-700 self-end"
+            className="ml-4 text-[9px] text-zinc-400 self-end"
             style={{ fontFamily: "var(--font-roboto-mono)" }}
           >
             REALTIME_SIGNAL_FREQ: 440HZ

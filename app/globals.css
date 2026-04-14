@@ -181,3 +181,27 @@ body {
 .pulse-dot {
   animation: pulse-dot 2s ease-in-out infinite;
 }
+
+/* Psycho-Pass — hue clear glow (subtle teal tint) */
+.hue-clear {
+  color: #7fffd4;
+  text-shadow: 0 0 8px rgba(127, 255, 212, 0.35);
+}
+
+/* JP watermark text — barely visible decorative kanji */
+.jp-watermark {
+  font-family: var(--font-roboto-mono);
+  color: rgba(0, 255, 65, 0.10);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+}
+
+/* JP label — micro text, zinc-500 level visibility */
+.jp-label {
+  font-family: var(--font-roboto-mono);
+  font-size: 9px;
+  color: rgba(161, 161, 170, 0.7); /* zinc-400 at 70% */
+  letter-spacing: 0.15em;
+  user-select: none;
+}
