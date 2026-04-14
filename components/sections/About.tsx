@@ -49,7 +49,7 @@ export default function About() {
               className="text-zinc-400 leading-relaxed text-sm mb-6"
               style={{ fontFamily: "var(--font-inter)" }}
             >
-              Senior Backend Developer especializado en construir sistemas de misión
+              Backend Developer especializado en construir sistemas de misión
               crítica con Python. Mi expertise está en diseñar arquitecturas API
               robustas, optimizar flujos de datos e integrar soluciones de IA de forma
               efectiva. Transformo lógica de negocio compleja en infraestructura digital
