@@ -4,7 +4,30 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const projects = [
+type ProjectStatus = "ACTIVE" | "HIBERNATED";
+
+interface Project {
+  id: string;
+  name: string;
+  desc: string;
+  tags: string[];
+  status: ProjectStatus;
+  category: string;
+  url?: string;
+}
+
+const statusConfig: Record<ProjectStatus, { label: string; classes: string }> = {
+  ACTIVE: {
+    label: "ACTIVE",
+    classes: "text-green-400 bg-green-950 border-green-900",
+  },
+  HIBERNATED: {
+    label: "HIBERNATED",
+    classes: "text-zinc-500 bg-zinc-900 border-zinc-700",
+  },
+};
+
+const projects: Project[] = [
   {
     id: "PRJ-001",
     name: "Herramienta Cámaras",
@@ -12,6 +35,7 @@ const projects = [
     tags: ["DJANGO", "REACT", "CHART.JS", "PDF"],
     status: "ACTIVE",
     category: "DIAGNÓSTICO DIGITAL",
+    url: "https://camaras.transformaciondigital.com.co/",
   },
   {
     id: "PRJ-002",
@@ -20,14 +44,16 @@ const projects = [
     tags: ["DJANGO", "REACT", "CKEDITOR", "POSTGRESQL"],
     status: "ACTIVE",
     category: "DIAGNÓSTICO DIGITAL",
+    url: "https://empresas40.transformaciondigital.com.co/",
   },
   {
     id: "PRJ-003",
-    name: "Tools ICETEX",
+    name: "Comunidad ICETEX",
     desc: "Plataforma de diagnóstico para el ecosistema ICETEX. Retroalimentación inmediata, reportes PDF y envío por email.",
     tags: ["DJANGO", "DRF", "REACT", "HTML2PDF"],
     status: "ACTIVE",
     category: "DIAGNÓSTICO DIGITAL",
+    url: "https://comunidadicetex.com/",
   },
   {
     id: "PRJ-004",
@@ -36,13 +62,14 @@ const projects = [
     tags: ["DJANGO", "REACT", "TYPESCRIPT", "POSTGRESQL"],
     status: "ACTIVE",
     category: "DIAGNÓSTICO DIGITAL",
+    url: "https://transformaciondigital.com.co/",
   },
   {
     id: "PRJ-005",
     name: "Caracterización CENISOFT",
     desc: "Herramienta de caracterización para empresas del sector software. Genera diagnósticos del ecosistema TI colombiano.",
     tags: ["DJANGO", "REACT", "CHART.JS", "DRF"],
-    status: "ACTIVE",
+    status: "HIBERNATED",
     category: "DIAGNÓSTICO DIGITAL",
   },
   {
@@ -52,6 +79,7 @@ const projects = [
     tags: ["DJANGO", "DRF", "REACT", "SWAGGER"],
     status: "ACTIVE",
     category: "NETWORKING",
+    url: "https://conexiones.wirkconsulting.com/",
   },
   {
     id: "PRJ-007",
@@ -60,22 +88,24 @@ const projects = [
     tags: ["DJANGO", "REACT", "TYPESCRIPT", "CHART.JS"],
     status: "ACTIVE",
     category: "GESTIÓN",
+    url: "https://managment.wirkconsulting.com/",
   },
   {
     id: "PRJ-008",
     name: "Wirktools v2",
     desc: "Plataforma multi-tenant. Múltiples organizaciones con datos aislados, roles diferenciados y módulos abstraídos.",
     tags: ["DJANGO", "MULTI-TENANT", "DRF", "CKEDITOR"],
-    status: "ACTIVE",
+    status: "HIBERNATED",
     category: "PLATAFORMA",
   },
   {
     id: "PRJ-009",
-    name: "Plan ICETEX (IA)",
+    name: "Productividad 360° (IA)",
     desc: "Planificación empresarial asistida por IA para emprendedores ICETEX. Business Model Canvas + PMV + Groq/Llama 3.3 70B.",
     tags: ["GROQ", "LLAMA 3.3", "DJANGO", "REACT"],
     status: "ACTIVE",
     category: "IA / LLM",
+    url: "https://productividad360.com.co/",
   },
   {
     id: "PRJ-010",
@@ -84,6 +114,7 @@ const projects = [
     tags: ["DJANGO", "REACT", "VITE", "STYLED-COMP"],
     status: "ACTIVE",
     category: "SAAS / COTIZACIÓN",
+    url: "https://rckapp.wirkconsulting.com/",
   },
   {
     id: "PRJ-011",
@@ -92,6 +123,7 @@ const projects = [
     tags: ["REACT 19", "VITE", "TAILWIND 4", "TS"],
     status: "ACTIVE",
     category: "FRONTEND",
+    url: "http://wirkconsulting.com/",
   },
   {
     id: "PRJ-012",
@@ -100,13 +132,14 @@ const projects = [
     tags: ["REACT 19", "VITE", "GEMINI API", "TS"],
     status: "ACTIVE",
     category: "IA / FRONTEND",
+    url: "https://fidi.wirkconsulting.com/",
   },
   {
     id: "PRJ-013",
     name: "Landing ICETEX",
     desc: "Frontend de acceso al ecosistema de herramientas ICETEX. Punto de entrada para beneficiarios del programa.",
     tags: ["REACT", "TYPESCRIPT", "AOS", "AXIOS"],
-    status: "ACTIVE",
+    status: "HIBERNATED",
     category: "FRONTEND",
   },
   {
@@ -114,7 +147,7 @@ const projects = [
     name: "Dashboard ICESI",
     desc: "Dashboard de visualización de datos para la Universidad ICESI. Gráficas interactivas conectadas a backend Django.",
     tags: ["REACT", "CHART.JS", "TYPESCRIPT", "AXIOS"],
-    status: "ACTIVE",
+    status: "HIBERNATED",
     category: "FRONTEND",
   },
 ];
@@ -154,64 +187,101 @@ export default function Projects() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800">
-        {projects.map((project, i) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: i * 0.05, duration: 0.4 }}
-            className="p-5 bg-zinc-950 hover:bg-zinc-900 transition-colors group border-l-2 border-l-transparent hover:border-l-green-400"
-          >
-            <div className="flex justify-between items-start mb-3">
-              <div className="flex flex-col gap-0.5">
-                <span
-                  className="text-[9px] text-zinc-600"
-                  style={{ fontFamily: "var(--font-roboto-mono)" }}
-                >
-                  FILE_ID: {project.id}
-                </span>
-                <span
-                  className="text-[8px] text-zinc-700 uppercase"
-                  style={{ fontFamily: "var(--font-roboto-mono)" }}
-                >
-                  {project.category}
-                </span>
-              </div>
-              <span
-                className="px-2 py-0.5 border text-[8px] text-green-400 bg-green-950 border-green-900 shrink-0"
-                style={{ fontFamily: "var(--font-roboto-mono)" }}
+        {projects.map((project, i) => {
+          const { label, classes } = statusConfig[project.status];
+          const isHibernated = project.status === "HIBERNATED";
+          const Wrapper = project.url ? "a" : "div";
+          const wrapperProps = project.url
+            ? { href: project.url, target: "_blank", rel: "noreferrer" }
+            : {};
+
+          return (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: i * 0.05, duration: 0.4 }}
+            >
+              <Wrapper
+                {...wrapperProps}
+                className={`block p-5 h-full bg-zinc-950 transition-colors group border-l-2 border-l-transparent ${
+                  isHibernated
+                    ? "opacity-50 hover:opacity-70"
+                    : "hover:bg-zinc-900 hover:border-l-green-400"
+                } ${project.url ? "cursor-pointer" : "cursor-default"}`}
               >
-                {project.status}
-              </span>
-            </div>
+                <div className="flex justify-between items-start mb-3">
+                  <div className="flex flex-col gap-0.5">
+                    <span
+                      className="text-[9px] text-zinc-600"
+                      style={{ fontFamily: "var(--font-roboto-mono)" }}
+                    >
+                      FILE_ID: {project.id}
+                    </span>
+                    <span
+                      className="text-[8px] text-zinc-700 uppercase"
+                      style={{ fontFamily: "var(--font-roboto-mono)" }}
+                    >
+                      {project.category}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {project.url && !isHibernated && (
+                      <span className="material-symbols-outlined text-[14px] text-zinc-700 group-hover:text-green-400 transition-colors">
+                        open_in_new
+                      </span>
+                    )}
+                    <span
+                      className={`px-2 py-0.5 border text-[8px] shrink-0 ${classes}`}
+                      style={{ fontFamily: "var(--font-roboto-mono)" }}
+                    >
+                      {label}
+                    </span>
+                  </div>
+                </div>
 
-            <h4
-              className="text-sm font-bold text-white mb-2 uppercase group-hover:text-green-400 transition-colors"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
-            >
-              {project.name}
-            </h4>
-
-            <p
-              className="text-[11px] text-zinc-500 mb-4 leading-relaxed"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
-              {project.desc}
-            </p>
-
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[9px] px-2 py-0.5 bg-zinc-800 text-zinc-400 border border-zinc-700"
-                  style={{ fontFamily: "var(--font-roboto-mono)" }}
+                <h4
+                  className={`text-sm font-bold mb-2 uppercase transition-colors ${
+                    isHibernated
+                      ? "text-zinc-500"
+                      : "text-white group-hover:text-green-400"
+                  }`}
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+                  {project.name}
+                </h4>
+
+                <p
+                  className="text-[11px] text-zinc-500 mb-4 leading-relaxed"
+                  style={{ fontFamily: "var(--font-inter)" }}
+                >
+                  {project.desc}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[9px] px-2 py-0.5 bg-zinc-800 text-zinc-400 border border-zinc-700"
+                      style={{ fontFamily: "var(--font-roboto-mono)" }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {project.url && !isHibernated && (
+                  <div
+                    className="mt-3 text-[9px] text-zinc-700 group-hover:text-green-400/60 transition-colors truncate"
+                    style={{ fontFamily: "var(--font-roboto-mono)" }}
+                  >
+                    {project.url}
+                  </div>
+                )}
+              </Wrapper>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
